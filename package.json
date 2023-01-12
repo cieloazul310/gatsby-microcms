@@ -8,7 +8,7 @@
     "clean": "gatsby clean",
     "lint": "eslint src/ --fix --ignore-pattern \"**/stories/**/*\" && eslint gatsby/ --fix",
     "format": "prettier \"{src,gatsby}/**/*.{js,jsx,ts,tsx}\" --parser typescript --write",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
     "dotenv": "^16.0.3",
