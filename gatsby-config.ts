@@ -1,5 +1,7 @@
 import type { GatsbyConfig } from 'gatsby';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 const pathPrefix = '/gatsby-microcms';
 
 const config: GatsbyConfig = {
@@ -10,7 +12,16 @@ const config: GatsbyConfig = {
     author: `@cieloazul310`,
   },
   pathPrefix,
-  plugins: [],
+  plugins: [
+    {
+      resolve: 'gatsby-source-microcms',
+      options: {
+        apiKey: process.env.MICROCMS_APIKEY,
+        serviceId: 'cieloazul310',
+        apis: [{ endpoint: 'hello', format: 'object' }],
+      },
+    },
+  ],
 };
 
 export default config;

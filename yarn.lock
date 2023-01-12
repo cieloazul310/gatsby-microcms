@@ -1766,10 +1766,60 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hapi/address@npm:^2.1.2":
+  version: 2.1.4
+  resolution: "@hapi/address@npm:2.1.4"
+  checksum: 10341c3b650746c79ac2c57118efb05d45d850b33aef82a6f2ba89419fdbf1b6d337c8b085cc9bc1af7a5fb18379c07edaf3be7584426f40bd370ed6de29e965
+  languageName: node
+  linkType: hard
+
+"@hapi/formula@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@hapi/formula@npm:1.2.0"
+  checksum: fb9e45c6898b3670dd827244e87d0470a13d439d8820bb25a1ac49dabfcff2039c4cd86d4d24b2072c4c5ac7cda4aa6070f3aca9cb488087466c2550d194d4e3
+  languageName: node
+  linkType: hard
+
+"@hapi/hoek@npm:^8.2.4, @hapi/hoek@npm:^8.3.0":
+  version: 8.5.1
+  resolution: "@hapi/hoek@npm:8.5.1"
+  checksum: 8f8ce36be4f5e5d7a712072d4a028a4a95beec7a7da3a7a6e9a0c07d697f04c19b37d93751db352c314ea831f7e2120569a035dc6a351ed8c0444f1d3b275621
+  languageName: node
+  linkType: hard
+
 "@hapi/hoek@npm:^9.0.0":
   version: 9.3.0
   resolution: "@hapi/hoek@npm:9.3.0"
   checksum: 4771c7a776242c3c022b168046af4e324d116a9d2e1d60631ee64f474c6e38d1bb07092d898bf95c7bc5d334c5582798a1456321b2e53ca817d4e7c88bc25b43
+  languageName: node
+  linkType: hard
+
+"@hapi/joi@npm:^16.1.7":
+  version: 16.1.8
+  resolution: "@hapi/joi@npm:16.1.8"
+  dependencies:
+    "@hapi/address": ^2.1.2
+    "@hapi/formula": ^1.2.0
+    "@hapi/hoek": ^8.2.4
+    "@hapi/pinpoint": ^1.0.2
+    "@hapi/topo": ^3.1.3
+  checksum: f0b50d66666ef7f88ec33a54eba1a1ca923eb3c4bbe6f7fb91c9d6e53f0118a0dc94d069949dc4500056b4f239bd8def3e7e845c0cdafb16fc5a5be4d4c76aaf
+  languageName: node
+  linkType: hard
+
+"@hapi/pinpoint@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@hapi/pinpoint@npm:1.0.2"
+  checksum: d7f0733d18f0a7c89fde96a99a398c0ffe4cf489d6a2c578b5a9e93a115d9681c3f4098027765e4807501c855442e7b8218a75b781dc2fcf640d8e69415fab93
+  languageName: node
+  linkType: hard
+
+"@hapi/topo@npm:^3.1.3":
+  version: 3.1.6
+  resolution: "@hapi/topo@npm:3.1.6"
+  dependencies:
+    "@hapi/hoek": ^8.3.0
+  checksum: 34278bc13b4023d6d0d7c913605a254b2d728dc6489cd465269eebaa7d8d2d81cda3f2157398dca87d3cb9e1a8aa8a1158ce2564c71a8e289b807c144e3b4c1e
   languageName: node
   linkType: hard
 
@@ -5406,6 +5456,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^7.0.0":
   version: 7.0.0
   resolution: "dotenv@npm:7.0.0"
@@ -6775,7 +6832,9 @@ __metadata:
     "@types/node": ^18.11.18
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.10
+    dotenv: ^16.0.3
     gatsby: ^5.4.0
+    gatsby-source-microcms: ^3.0.0
     prettier: ^2.8.2
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -6912,6 +6971,17 @@ __metadata:
     "@types/sharp": ^0.31.0
     sharp: ^0.31.3
   checksum: 916a57e1f5799ebf3639e159141196c2229fed7a96d04d414d3f67add1bae2cd18bf5f58b884cf19acd310da2a7093a7cdf06c930e7e59bbdba88d39d99016bf
+  languageName: node
+  linkType: hard
+
+"gatsby-source-microcms@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "gatsby-source-microcms@npm:3.0.0"
+  dependencies:
+    "@hapi/joi": ^16.1.7
+    camelcase: ^5.3.1
+    node-fetch: ^2.6.0
+  checksum: 7b5447065e199a817748833a5ba1b0819f144cb9c0f1afd3b282e4e7df0285d43d771b1005f459f1fca1f25deb885fe654bbc0bcaaad40a89f80555510f90229
   languageName: node
   linkType: hard
 
@@ -9409,7 +9479,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.7, node-fetch@npm:^2.6.7":
+"node-fetch@npm:2.6.7, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
   dependencies:
