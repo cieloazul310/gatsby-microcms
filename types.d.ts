@@ -8,6 +8,34 @@ export type SiteMetadata = {
 };
 
 export type MicroCMSHello = {
+  text: string;
+} & Node;
+
+export type MicroCMSBlogsCategory = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  name: string;
+};
+
+export type MicroCMSBlogsEyecatch = {
+  url: string;
+  height: number;
+  width: number;
+};
+
+export type MicroCMSBlogs = {
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
   title: string;
-  body: string;
+  content: string;
+  eyecatch: MicroCMSBlogsEyecatch | null;
+  category: MicroCMSBlogsCategory | null;
+  sortIndex: number;
+  blogsId: string;
+  slug: string;
 } & Node;

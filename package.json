@@ -6,7 +6,6 @@
     "develop": "gatsby develop -o -H 0.0.0.0",
     "serve": "gatsby serve -o -H 0.0.0.0 --prefix-paths",
     "clean": "gatsby clean",
-    "lint": "eslint src/ --fix --ignore-pattern \"**/stories/**/*\" && eslint gatsby/ --fix",
     "format": "prettier \"{src,gatsby}/**/*.{js,jsx,ts,tsx}\" --parser typescript --write",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },

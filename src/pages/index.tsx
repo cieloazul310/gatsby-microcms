@@ -1,18 +1,42 @@
 import * as React from 'react';
-import { graphql, type PageProps } from 'gatsby';
+import { Link, graphql, type PageProps } from 'gatsby';
 import Seo from '../components/Seo';
-import type { MicroCMSHello } from '../../types';
+import useSiteMetadata from '../utils/useSiteMetadata';
+import type { MicroCMSHello, MicroCMSBlogs } from '../../types';
 
 type IndexPageData = {
-  microcmsHello: Pick<MicroCMSHello, 'id' | 'title' | 'body'>
+  microcmsHello: Pick<MicroCMSHello, 'text'>;
+  allMicrocmsBlogs: {
+    nodes: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt'>[];
+  };
 };
 
 function IndexPage({ data }: PageProps<IndexPageData>) {
+  const { microcmsHello, allMicrocmsBlogs } = data;
+  const { title, description } = useSiteMetadata();
   return (
-    <div>
-      <h1>{data.microcmsHello.title}</h1>
-      <p>{data.microcmsHello.body}</p>
-    </div>
+    <>
+      <header>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </header>
+      <article>
+        <p>{microcmsHello.text}</p>
+      </article>
+      <nav>
+        <h2>最新のニュース</h2>
+        <ul>
+          {allMicrocmsBlogs.nodes.map((node) => (
+            <li key={node.slug}>
+              <Link to={node.slug}>
+                <p>{node.title}</p>
+                <small>{node.publishedAt}</small>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 }
 
@@ -25,9 +49,14 @@ export function Head() {
 export const query = graphql`
   {
     microcmsHello {
-      id
-      title
-      body
+      text
+    }
+    allMicrocmsBlogs(sort: { publishedAt: DESC }, limit: 8) {
+      nodes {
+        slug
+        title
+        publishedAt(formatString: "YYYY年MM月DD日")
+      }
     }
   }
 `;
