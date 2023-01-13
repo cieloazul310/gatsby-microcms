@@ -20,6 +20,12 @@ export type MicroCMSBlogsCategory = {
   name: string;
 };
 
+export type MicroCMSBlogsEyecatch = {
+  url: string;
+  height: number;
+  width: number;
+};
+
 export type MicroCMSBlogs = {
   createdAt: string;
   updatedAt: string;
@@ -27,7 +33,7 @@ export type MicroCMSBlogs = {
   revisedAt: string;
   title: string;
   content: string;
-  eyecatch: string | null;
+  eyecatch: MicroCMSBlogsEyecatch | null;
   category: MicroCMSBlogsCategory | null;
   sortIndex: number;
   blogsId: string;

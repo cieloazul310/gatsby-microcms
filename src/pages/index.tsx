@@ -15,14 +15,14 @@ function IndexPage({ data }: PageProps<IndexPageData>) {
   const { microcmsHello, allMicrocmsBlogs } = data;
   const { title, description } = useSiteMetadata();
   return (
-    <div>
+    <>
       <header>
         <h1>{title}</h1>
         <p>{description}</p>
       </header>
-      <main>
+      <article>
         <p>{microcmsHello.text}</p>
-      </main>
+      </article>
       <nav>
         <h2>最新のニュース</h2>
         <ul>
@@ -36,7 +36,7 @@ function IndexPage({ data }: PageProps<IndexPageData>) {
           ))}
         </ul>
       </nav>
-    </div>
+    </>
   );
 }
 

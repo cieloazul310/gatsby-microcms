@@ -19,17 +19,12 @@ function BlogsTemplate({ data }: PageProps<BlogPostTemplateQueryData, BlogPostTe
   const { microcmsBlogs, newer, older } = data;
   const { title, publishedAt, content } = microcmsBlogs;
   return (
-    <div>
-      <div>
-        <Link to="/">トップページ</Link>
-      </div>
-      <main>
-        <article>
-          <h1>{title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: content }}></div>
-          <aside>{publishedAt}</aside>
-        </article>
-      </main>
+    <>
+      <article>
+        <h1>{title}</h1>
+        <p>{publishedAt}</p>
+        <div dangerouslySetInnerHTML={{ __html: content }}></div>
+      </article>
       <nav>
         <div>
           {newer ? (
@@ -48,7 +43,7 @@ function BlogsTemplate({ data }: PageProps<BlogPostTemplateQueryData, BlogPostTe
           ) : null}
         </div>
       </nav>
-    </div>
+    </>
   );
 }
 
