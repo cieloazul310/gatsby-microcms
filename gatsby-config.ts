@@ -18,7 +18,10 @@ const config: GatsbyConfig = {
       options: {
         apiKey: process.env.MICROCMS_APIKEY,
         serviceId: 'cieloazul310',
-        apis: [{ endpoint: 'hello', format: 'object' }],
+        apis: [
+          { endpoint: 'hello', format: 'object' },
+          { endpoint: 'news', format: 'list' },
+        ],
       },
     },
   ],
