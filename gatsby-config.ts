@@ -20,7 +20,7 @@ const config: GatsbyConfig = {
         serviceId: 'cieloazul310',
         apis: [
           { endpoint: 'hello', format: 'object' },
-          { endpoint: 'news', format: 'list' },
+          { endpoint: 'blogs', format: 'list' },
         ],
       },
     },

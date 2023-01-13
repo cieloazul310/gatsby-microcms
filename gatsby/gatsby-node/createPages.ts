@@ -1,10 +1,10 @@
 import * as path from 'path';
 import type { CreatePagesArgs } from 'gatsby';
-import type { MicroCMSNews } from '../../types';
+import type { MicroCMSBlogs } from '../../types';
 
 type CreatePagesQueryData = {
-  allMicrocmsNews: {
-    nodes: Pick<MicroCMSNews, 'slug'>[];
+  allMicrocmsBlogs: {
+    nodes: Pick<MicroCMSBlogs, 'slug'>[];
   };
 };
 
@@ -12,7 +12,7 @@ export default async function createPages({ graphql, actions, reporter }: Create
   const { createPage } = actions;
   const result = await graphql<CreatePagesQueryData>(`
     query {
-      allMicrocmsNews(sort: { publishedAt: DESC }) {
+      allMicrocmsBlogs(sort: { publishedAt: DESC }) {
         nodes {
           slug
         }
@@ -24,14 +24,14 @@ export default async function createPages({ graphql, actions, reporter }: Create
   }
   if (!result.data) throw new Error('There are no posts');
 
-  const { allMicrocmsNews } = result.data;
-  allMicrocmsNews.nodes.forEach(({ slug }, index) => {
-    const newer = index !== 0 ? allMicrocmsNews.nodes[index - 1].slug : null;
-    const older = index !== allMicrocmsNews.nodes.length - 1 ? allMicrocmsNews.nodes[index + 1].slug : null;
+  const { allMicrocmsBlogs } = result.data;
+  allMicrocmsBlogs.nodes.forEach(({ slug }, index) => {
+    const newer = index !== 0 ? allMicrocmsBlogs.nodes[index - 1].slug : null;
+    const older = index !== allMicrocmsBlogs.nodes.length - 1 ? allMicrocmsBlogs.nodes[index + 1].slug : null;
 
     createPage({
       path: slug,
-      component: path.resolve('./src/templates/news.tsx'),
+      component: path.resolve('./src/templates/blog-post.tsx'),
       context: {
         slug,
         newer,

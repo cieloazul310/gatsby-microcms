@@ -2,17 +2,17 @@ import * as React from 'react';
 import { Link, graphql, type PageProps } from 'gatsby';
 import Seo from '../components/Seo';
 import useSiteMetadata from '../utils/useSiteMetadata';
-import type { MicroCMSHello, MicroCMSNews } from '../../types';
+import type { MicroCMSHello, MicroCMSBlogs } from '../../types';
 
 type IndexPageData = {
-  microcmsHello: Pick<MicroCMSHello, 'id' | 'title' | 'body'>
-  allMicrocmsNews: {
-    nodes: Pick<MicroCMSNews, 'slug' | 'title' | 'publishedAt'>[]
-  }
+  microcmsHello: Pick<MicroCMSHello, 'text'>;
+  allMicrocmsBlogs: {
+    nodes: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt'>[];
+  };
 };
 
 function IndexPage({ data }: PageProps<IndexPageData>) {
-  const { microcmsHello, allMicrocmsNews } = data;
+  const { microcmsHello, allMicrocmsBlogs } = data;
   const { title, description } = useSiteMetadata();
   return (
     <div>
@@ -21,13 +21,12 @@ function IndexPage({ data }: PageProps<IndexPageData>) {
         <p>{description}</p>
       </header>
       <main>
-        <h2>{microcmsHello.title}</h2>
-        <p>{microcmsHello.body}</p>
+        <p>{microcmsHello.text}</p>
       </main>
       <nav>
         <h2>最新のニュース</h2>
         <ul>
-          {allMicrocmsNews.nodes.map((node) => (
+          {allMicrocmsBlogs.nodes.map((node) => (
             <li key={node.slug}>
               <Link to={node.slug}>
                 <p>{node.title}</p>
@@ -50,11 +49,9 @@ export function Head() {
 export const query = graphql`
   {
     microcmsHello {
-      id
-      title
-      body
+      text
     }
-    allMicrocmsNews(sort: { publishedAt: DESC }, limit: 8) {
+    allMicrocmsBlogs(sort: { publishedAt: DESC }, limit: 8) {
       nodes {
         slug
         title

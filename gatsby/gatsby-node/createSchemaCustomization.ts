@@ -1,24 +1,24 @@
 import type { CreateSchemaCustomizationArgs } from 'gatsby';
-import type { MicroCMSNews } from '../../types';
+import type { MicroCMSBlogs } from '../../types';
 
 export default async function createSchemaCustomization({ actions, schema }: CreateSchemaCustomizationArgs) {
   const { createTypes } = actions;
   createTypes(`
-    type MicrocmsNews implements Node {
+    type MicrocmsBlogs implements Node {
       slug: String!
     }
   `);
   createTypes(
     schema.buildObjectType({
-      name: `MicrocmsNews`,
+      name: `MicrocmsBlogs`,
       fields: {
         slug: {
           type: `String!`,
-          resolve: ({ newsId, publishedAt }: Pick<MicroCMSNews, 'newsId' | 'publishedAt'>) => {
+          resolve: ({ blogsId, publishedAt }: Pick<MicroCMSBlogs, 'blogsId' | 'publishedAt'>) => {
             const date = new Date(publishedAt);
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
-            return `/${year}/${month.toString().padStart(2, '0')}/${newsId}/`;
+            return `/${year}/${month.toString().padStart(2, '0')}/${blogsId}/`;
           },
         },
       },

@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { Link, graphql, type PageProps, type HeadProps } from 'gatsby';
 import Seo from '..//components/Seo';
-import type { MicroCMSNews } from '../../types';
+import type { MicroCMSBlogs } from '../../types';
 
-type NewsTemplateQueryData = {
-  microcmsNews: Pick<MicroCMSNews, 'slug' | 'title' | 'publishedAt' | 'content'>;
-  newer: Pick<MicroCMSNews, 'slug' | 'title' | 'publishedAt'> | null;
-  older: Pick<MicroCMSNews, 'slug' | 'title' | 'publishedAt'> | null;
+type BlogPostTemplateQueryData = {
+  microcmsBlogs: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt' | 'content'>;
+  newer: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt'> | null;
+  older: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt'> | null;
 };
 
-type NewsTemplatePageContext = {
+type BlogPostTemplatePageContext = {
   slug: string;
   newer: string | null;
   older: string | null;
 };
 
-function NewsTemplate({ data }: PageProps<NewsTemplateQueryData, NewsTemplatePageContext>) {
-  const { microcmsNews, newer, older } = data;
-  const { title, publishedAt, content } = microcmsNews;
+function BlogsTemplate({ data }: PageProps<BlogPostTemplateQueryData, BlogPostTemplatePageContext>) {
+  const { microcmsBlogs, newer, older } = data;
+  const { title, publishedAt, content } = microcmsBlogs;
   return (
     <div>
       <div>
@@ -52,27 +52,27 @@ function NewsTemplate({ data }: PageProps<NewsTemplateQueryData, NewsTemplatePag
   );
 }
 
-export default NewsTemplate;
+export default BlogsTemplate;
 
-export function Head({ data }: HeadProps<NewsTemplateQueryData, NewsTemplatePageContext>) {
-  const { microcmsNews } = data;
-  return <Seo title={microcmsNews.title} />;
+export function Head({ data }: HeadProps<BlogPostTemplateQueryData, BlogPostTemplatePageContext>) {
+  const { microcmsBlogs } = data;
+  return <Seo title={microcmsBlogs.title} />;
 }
 
 export const query = graphql`
-  query NewsPageQuery($slug: String!, $newer: String, $older: String) {
-    microcmsNews(slug: { eq: $slug }) {
+  query BlogPostPageQuery($slug: String!, $newer: String, $older: String) {
+    microcmsBlogs(slug: { eq: $slug }) {
       slug
       title
       publishedAt(formatString: "YYYY年MM月DD日")
       content
     }
-    newer: microcmsNews(slug: { eq: $newer }) {
+    newer: microcmsBlogs(slug: { eq: $newer }) {
       slug
       title
       publishedAt(formatString: "YYYY年MM月DD日")
     }
-    older: microcmsNews(slug: { eq: $older }) {
+    older: microcmsBlogs(slug: { eq: $older }) {
       slug
       title
       publishedAt(formatString: "YYYY年MM月DD日")

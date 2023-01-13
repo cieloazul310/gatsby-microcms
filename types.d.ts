@@ -8,11 +8,10 @@ export type SiteMetadata = {
 };
 
 export type MicroCMSHello = {
-  title: string;
-  body: string;
+  text: string;
 } & Node;
 
-export type MicroCMSNewsCategory = {
+export type MicroCMSBlogsCategory = {
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -21,15 +20,16 @@ export type MicroCMSNewsCategory = {
   name: string;
 };
 
-export type MicroCMSNews = {
+export type MicroCMSBlogs = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
   title: string;
   content: string;
-  category: MicroCMSNewsCategory | null;
+  eyecatch: string | null;
+  category: MicroCMSBlogsCategory | null;
   sortIndex: number;
-  newsId: string;
+  blogsId: string;
   slug: string;
 } & Node;
