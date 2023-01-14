@@ -14,7 +14,6 @@ function useSiteMetadata() {
         siteMetadata {
           title
           description
-          siteUrl
           author
         }
       }

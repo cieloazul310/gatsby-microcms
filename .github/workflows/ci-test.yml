@@ -3,6 +3,7 @@ on:
   push:
     paths-ignore:
       - "src/**"
+      - README.md
   
   pull_request:
     types: [opened, synchronize]
@@ -13,6 +14,8 @@ on:
       - beta
       - alpha
       - "+([0-9])?(.{+([0-9]),x}).x"
+    paths-ignore:
+      - README.md
 
 jobs:
   test:

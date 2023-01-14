@@ -2,16 +2,14 @@ import type { GatsbyConfig } from 'gatsby';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
-const pathPrefix = '/gatsby-microcms';
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Gatsby microCMS Example`,
     description: `Gatsby + microCMS`,
-    siteUrl: 'https://cieloazul310.github.io/gatsby-microcms',
-    author: `@cieloazul310`,
+    author: `cieloazul310`,
   },
-  pathPrefix,
+  pathPrefix: '/gatsby-microcms',
   plugins: [
     {
       resolve: 'gatsby-source-microcms',
