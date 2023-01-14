@@ -59,10 +59,8 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `サイト名`,
     description: `サイトの説明`,
-    siteUrl: 'siteUrl',
     author: `作者名`,
   },
-  pathPrefix,
   plugins: [
     {
       resolve: 'gatsby-source-microcms',
