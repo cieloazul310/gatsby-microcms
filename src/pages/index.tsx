@@ -23,8 +23,8 @@ function IndexPage({ data }: PageProps<IndexPageData>) {
       <article>
         <p>{microcmsHello.text}</p>
       </article>
-      <nav>
-        <h2>最新のニュース</h2>
+      <div>
+        <h2>最新記事</h2>
         <ul>
           {allMicrocmsBlogs.nodes.map((node) => (
             <li key={node.slug}>
@@ -35,7 +35,8 @@ function IndexPage({ data }: PageProps<IndexPageData>) {
             </li>
           ))}
         </ul>
-      </nav>
+        <Link to="/posts/">記事の一覧へ</Link>
+      </div>
     </>
   );
 }
