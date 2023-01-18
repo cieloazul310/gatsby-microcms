@@ -1,10 +1,17 @@
+/**
+ * createPages
+ * https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages
+ */
 import * as path from 'path';
 import type { CreatePagesArgs } from 'gatsby';
-import type { MicroCMSBlogs } from '../../types';
+import type { MicrocmsBlogs } from '../../types';
 
+/**
+ * createPages で実行するGraphQLクエリの返り値の型定義
+ */
 type CreatePagesQueryData = {
   allMicrocmsBlogs: {
-    nodes: Pick<MicroCMSBlogs, 'slug'>[];
+    nodes: Pick<MicrocmsBlogs, 'slug'>[];
   };
 };
 
@@ -26,14 +33,24 @@ export default async function createPages({ graphql, actions, reporter }: Create
 
   const { allMicrocmsBlogs } = result.data;
 
-  // create page for each post
+  /**
+   * 各記事のページを生成する
+   * path は createSchemaCustomization で生成した `slug` を指定
+   *
+   * "/YYYY/MM/${blogsId}/"
+   */
   allMicrocmsBlogs.nodes.forEach(({ slug }, index) => {
+    /** 一つ新しい記事のslugを取得 */
     const newer = index !== 0 ? allMicrocmsBlogs.nodes[index - 1].slug : null;
+    /** 一つ古い記事のslugを取得 */
     const older = index !== allMicrocmsBlogs.nodes.length - 1 ? allMicrocmsBlogs.nodes[index + 1].slug : null;
 
     createPage({
       path: slug,
       component: path.resolve('./src/templates/blog-post.tsx'),
+      /**
+       * context はテンプレートのGraphQLクエリで変数として使用できる
+       */
       context: {
         slug,
         newer,
@@ -42,13 +59,20 @@ export default async function createPages({ graphql, actions, reporter }: Create
     });
   });
 
-  // create page for postlist page
+  /** 記事リストの一つのページに表示する記事数 */
   const postsPerPage = 20;
+
+  /** 記事リストのページ数 */
   const numPages = Math.ceil(allMicrocmsBlogs.nodes.length / postsPerPage);
+
+  /** 記事リストの各ページを生成 */
   Array.from({ length: numPages }).forEach((_, index) => {
     createPage({
       path: index === 0 ? '/posts/' : `/posts/${index + 1}/`,
       component: path.resolve('./src/templates/post-list.tsx'),
+      /**
+       * context はテンプレートのGraphQLクエリで変数として使用できる
+       */
       context: {
         limit: postsPerPage,
         skip: index * postsPerPage,

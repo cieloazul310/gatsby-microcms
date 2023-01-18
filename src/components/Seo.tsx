@@ -6,16 +6,22 @@ type SeoProps = React.PropsWithChildren<{
   description?: string;
 }>;
 
-function Seo(props: SeoProps) {
+/**
+ * Gatsby Head API で使用するための <Seo> コンポーネント
+ *
+ * Gatsby Head API
+ * https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
+function Seo({ title, description, children }: SeoProps) {
   const siteMetadata = useSiteMetadata();
-  const title = props.title ? `${props.title} - ${siteMetadata.title}` : siteMetadata.title;
-  const description = props.description ?? siteMetadata.description;
+  const pageTitle = title ? `${title} - ${siteMetadata.title}` : siteMetadata.title;
+  const pageDescription = description ?? siteMetadata.description;
 
   return (
     <>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      {props.children}
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      {children}
     </>
   );
 }

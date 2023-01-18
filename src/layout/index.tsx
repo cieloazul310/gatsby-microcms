@@ -4,9 +4,7 @@ import useSiteMetadata from '../utils/useSiteMetadata';
 
 import './layout.css';
 
-type LayoutProps = React.PropsWithChildren<{
-
-}>;
+type LayoutProps = React.PropsWithChildren<Record<string, unknown>>;
 
 function Layout({ children }: LayoutProps) {
   const { title, author } = useSiteMetadata();
