@@ -68,7 +68,7 @@ export function Head({ data }: HeadProps<BlogPostTemplateQueryData, BlogPostTemp
 /**
  * Querying Data in Pages with GraphQL
  * https://www.gatsbyjs.com/docs/how-to/querying-data/page-query/
- * 
+ *
  * ページコンテキストが変数として利用できる
  * - $slug: String!
  * - $newer: String

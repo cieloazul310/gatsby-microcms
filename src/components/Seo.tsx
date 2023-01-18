@@ -8,7 +8,7 @@ type SeoProps = React.PropsWithChildren<{
 
 /**
  * Gatsby Head API で使用するための <Seo> コンポーネント
- * 
+ *
  * Gatsby Head API
  * https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */

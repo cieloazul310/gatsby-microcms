@@ -77,7 +77,7 @@ export function Head({ pageContext }: HeadProps<PostListTemplateData, PostListTe
 /**
  * Querying Data in Pages with GraphQL
  * https://www.gatsbyjs.com/docs/how-to/querying-data/page-query/
- * 
+ *
  * ページコンテキストが変数として利用できる
  * - $skip: Int!
  * - $limit: Int!

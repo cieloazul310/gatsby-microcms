@@ -61,7 +61,7 @@ export default async function createPages({ graphql, actions, reporter }: Create
 
   /** 記事リストの一つのページに表示する記事数 */
   const postsPerPage = 20;
-  
+
   /** 記事リストのページ数 */
   const numPages = Math.ceil(allMicrocmsBlogs.nodes.length / postsPerPage);
 
