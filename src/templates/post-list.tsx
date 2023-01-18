@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { Link, graphql, type PageProps, type HeadProps } from 'gatsby';
 import Seo from '../components/Seo';
-import type { MicroCMSBlogs } from '../../types';
+import type { MicrocmsBlogs } from '../../types';
 
+/**
+ * 記事リストのページで実行するGraphQLクエリの返り値の型定義
+ */
 type PostListTemplateData = {
   allMicrocmsBlogs: {
-    nodes: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt'>[];
+    nodes: Pick<MicrocmsBlogs, 'slug' | 'title' | 'publishedAt'>[];
   };
 };
 
+/**
+ * 記事リストのページで実行するGraphQLクエリの返り値の型定義
+ */
 type PostListTemplatePageContext = {
   limit: number;
   skip: number;
@@ -58,12 +64,24 @@ function PostListTemplate({ data, pageContext }: PageProps<PostListTemplateData,
 
 export default PostListTemplate;
 
+/**
+ * Gatsby Head API
+ * https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
 export function Head({ pageContext }: HeadProps<PostListTemplateData, PostListTemplatePageContext>) {
   const { numPages, currentPage } = pageContext;
   const title = `記事一覧 (${currentPage}/${numPages})`;
   return <Seo title={title} />;
 }
 
+/**
+ * Querying Data in Pages with GraphQL
+ * https://www.gatsbyjs.com/docs/how-to/querying-data/page-query/
+ * 
+ * ページコンテキストが変数として利用できる
+ * - $skip: Int!
+ * - $limit: Int!
+ */
 export const query = graphql`
   query PostList($skip: Int!, $limit: Int!) {
     allMicrocmsBlogs(sort: { publishedAt: DESC }, limit: $limit, skip: $skip) {

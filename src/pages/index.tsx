@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Link, graphql, type PageProps } from 'gatsby';
 import Seo from '../components/Seo';
 import useSiteMetadata from '../utils/useSiteMetadata';
-import type { MicroCMSHello, MicroCMSBlogs } from '../../types';
+import type { MicrocmsHello, MicrocmsBlogs } from '../../types';
 
 type IndexPageData = {
-  microcmsHello: Pick<MicroCMSHello, 'text'>;
+  microcmsHello: Pick<MicrocmsHello, 'text'>;
   allMicrocmsBlogs: {
-    nodes: Pick<MicroCMSBlogs, 'slug' | 'title' | 'publishedAt'>[];
+    nodes: Pick<MicrocmsBlogs, 'slug' | 'title' | 'publishedAt'>[];
   };
 };
 
@@ -43,10 +43,18 @@ function IndexPage({ data }: PageProps<IndexPageData>) {
 
 export default IndexPage;
 
+/**
+ * Gatsby Head API
+ * https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
 export function Head() {
   return <Seo />;
 }
 
+/**
+ * Querying Data in Pages with GraphQL
+ * https://www.gatsbyjs.com/docs/how-to/querying-data/page-query/
+ */
 export const query = graphql`
   {
     microcmsHello {
