@@ -68,7 +68,7 @@ export default async function createPages({ graphql, actions, reporter }: Create
   /** 記事リストの各ページを生成 */
   Array.from({ length: numPages }).forEach((_, index) => {
     createPage({
-      path: index === 0 ? '/posts/' : `/posts/${index + 1}/`,
+      path: index === 0 ? '/posts/' : `/posts/${encodeURIComponent(index + 1)}/`,
       component: path.resolve('./src/templates/post-list.tsx'),
       /**
        * context はテンプレートのGraphQLクエリで変数として使用できる

@@ -1,6 +1,13 @@
 name: CI Test
 on:
   push:
+    branches-ignore:
+      - main
+      - next
+      - next-major
+      - beta
+      - alpha
+      - "+([0-9])?(.{+([0-9]),x}).x"
     paths-ignore:
       - "src/**"
       - README.md
@@ -35,5 +42,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Runs tests
-        run: yarn run test
+      - name: Runs build test
+        env:
+          MICROCMS_APIKEY: ${{ secrets.MICROCMS_APIKEY }}
+        run: yarn run build --no-uglify
