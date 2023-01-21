@@ -1,10 +1,5 @@
 name: CI Test
 on:
-  push:
-    paths-ignore:
-      - "src/**"
-      - README.md
-  
   pull_request:
     types: [opened, synchronize]
     branches:
@@ -35,5 +30,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Runs tests
+      - name: Runs build test
+        env:
+          MICROCMS_APIKEY: ${{ secrets.MICROCMS_APIKEY }}
         run: yarn run build --no-uglify
