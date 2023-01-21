@@ -33,7 +33,9 @@ export default async function createSchemaCustomization({ actions, schema }: Cre
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
 
-            return `/${year}/${month.toString().padStart(2, '0')}/${blogsId}/`;
+            return `/${encodeURIComponent(year.toString())}/${encodeURIComponent(month.toString().padStart(2, '0'))}/${encodeURIComponent(
+              blogsId
+            )}/`;
           },
         },
       },
