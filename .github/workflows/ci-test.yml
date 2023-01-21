@@ -42,8 +42,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Runs tests
+      - name: Runs build test
         env:
-          PREFIX_PATHS: 'true'
           MICROCMS_APIKEY: ${{ secrets.MICROCMS_APIKEY }}
         run: yarn run build --no-uglify
